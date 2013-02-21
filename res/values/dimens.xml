@@ -1,0 +1,4 @@
+<resources>
+    <dimen name="webcntbar_button_size">32dp</dimen>
+    <dimen name="webcntbar_icon_padding">4dp</dimen>
+</resources>
