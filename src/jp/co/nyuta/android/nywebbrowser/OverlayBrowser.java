@@ -38,6 +38,8 @@ public class OverlayBrowser extends OverlayApplication {
 		default_attr.window_width = size.x;
 		default_attr.window_height = size.y - 82;	// 少しだけ小さく表示
 		default_attr.only_windowbar_move = true;
+		default_attr.overlay_window_flag &= ~WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;	// OverlayWindowの仕様にかぎらず、Key入力のために必要
+		default_attr.overlay_window_layer = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT;	// Layerを上位に変更
 		return default_attr;
 	}
 
@@ -55,14 +57,6 @@ public class OverlayBrowser extends OverlayApplication {
 		mController.show();
 		return thisRoot;
 	}
-
-	@Override
-	protected int getWindowParameterFlag() {
-		int flag = super.getWindowParameterFlag();
-		flag &= ~WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;	// OverlayWindowの仕様にかぎらず、Key入力のために必要
-		return flag;
-	}
-
 
 
 	/* ########################################################## */
